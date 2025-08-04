@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+body {
+  overscroll-behavior: none;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sets-container {
+  height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  transform: translateZ(0);
+}
+
+.draggable-item {
+  touch-action: pan-y; /* Важно для мобильных устройств */
+  cursor: grab;
+  padding: 16px;  
+  background: #fff;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+
+
