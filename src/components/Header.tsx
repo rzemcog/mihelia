@@ -9,6 +9,9 @@ export function Header() {
 				<a href="/" class={url == '/' && 'active'}>
 					Home
 				</a>
+				<a href="/progress" class={url == '/progress' && 'active'}>
+					Progress
+				</a>
 			</nav>
 		</header>
 	);

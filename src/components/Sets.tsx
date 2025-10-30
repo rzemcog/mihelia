@@ -1,10 +1,9 @@
-import { closestCenter, DndContext, DragEndEvent, DragOverlay, DragStartEvent, PointerSensor, TouchSensor, UniqueIdentifier, useSensor, useSensors } from '@dnd-kit/core';
+import { closestCenter, DndContext, DragEndEvent, DragStartEvent, PointerSensor, TouchSensor, UniqueIdentifier, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { useState } from 'preact/hooks';
+import { useState } from 'react';
 import { restrictToVerticalAxis, restrictToParentElement } from '@dnd-kit/modifiers';
-import { useAutoAnimate } from '@formkit/auto-animate/preact';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Set } from './Set';
-import { swipeBehavior, isSwipeBehaviorSupported  } from '@telegram-apps/sdk';
 
 interface Item {
     id: string | number;
@@ -50,7 +49,7 @@ export function Sets() {
             >
                 <div 
                     ref={parent}
-                    class="sets-container"
+                    className="sets-container"
                 >
                     { items.map((item) => {
                                 const { id, index } = item;

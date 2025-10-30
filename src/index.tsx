@@ -1,5 +1,5 @@
-import { render } from 'preact';
-import { LocationProvider, Router, Route } from 'preact-iso';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from './components/Header.jsx';
 import { Home } from './pages/Home/index.jsx';
@@ -7,20 +7,27 @@ import { NotFound } from './pages/_404.jsx';
 import './style.css';
 import { init } from './init'
 import { retrieveLaunchParams, postEvent } from '@telegram-apps/sdk-react';
+import { Reports } from './pages/Reports/index.jsx';
+import { Exercises } from './pages/Exercises/index.jsx';
+import { Progress } from './pages/Progress/index.jsx';
+import { Footer } from './components/Footer.jsx';
 
 
 export function App() {
 	return (
 		//<TelegramSDKInitProvider>
-			<LocationProvider>
-				<Header />
+			<BrowserRouter>
 				<main>
-					<Router>
-						<Route path="/" component={Home} />
-						<Route default component={NotFound} />
-					</Router>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/reports" element={<Reports />}/>
+						<Route path="/exercises" element={<Exercises />} />
+						<Route path="/progress" element={<Progress />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
 				</main>
-			</LocationProvider>
+				<Footer/>
+			</BrowserRouter>
 		// </TelegramSDKInitProvider>
 
 	);
@@ -45,12 +52,14 @@ try {
     mockForMacOS: platform === 'macos',
   })
     .then(() => {
-		render(<App />, document.getElementById('app'));
+		const root = createRoot(document.getElementById('app'));
+		root.render(<App />);
 		postEvent('web_app_expand');
     });
 } catch (e) {
   const str = JSON.stringify(e);
-  render(<Error errorText={str}/>, document.getElementById('app'))
+  const root = createRoot(document.getElementById('app'));
+  root.render(<Error errorText={str}/>);
   //root.render(<EnvUnsupported/>);
 }
 

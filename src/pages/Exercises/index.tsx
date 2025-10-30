@@ -1,3 +1,3 @@
 export function Exercises() {
-    return <div></div>
+    return <div>Упражнянки</div>
 }

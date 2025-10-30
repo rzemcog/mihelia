@@ -4,9 +4,9 @@ import { SetProps } from "../models/SetProps";
 import { AdjustDraggableAttributes } from "../models/DraggableAttributes";
 import { useMergedHandlers } from "../helpers/useMergedHandlers";
 import { animated, useSpring } from "@react-spring/web";
-import { usePreactDrag } from "../helpers/usePreactDrag";
+import { useDrag } from "@use-gesture/react";
 import { FullGestureState } from "@use-gesture/react";
-import { useMemo, useRef } from "preact/compat";
+import { useRef } from "react";
 import { l } from "../locale/localization";
 
 export function Set(props: SetProps) {
@@ -40,7 +40,7 @@ export function Set(props: SetProps) {
             }
         }
     ));
-    const swipe = usePreactDrag((state) => onSwipping(state),
+    const swipe = useDrag((state) => onSwipping(state),
             {
                axis: 'x',
                swipe: {

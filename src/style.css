@@ -1,18 +1,43 @@
 @import "tailwindcss";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   overscroll-behavior: none;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0 ));
+}
+
+footer nav {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 90px;
+  border-top: 1px solid #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  background-color: #282828;
 }
 
 .sets-container {
-  height: 80vh;
+  height: 100vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   transform: translateZ(0);
+}
+
+.sets-container > div {
+  height: 60px;
 }
 
 .draggable-item {
