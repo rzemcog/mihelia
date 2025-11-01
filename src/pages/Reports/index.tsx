@@ -1,3 +1,3 @@
 export function Reports() {
-    return (<div></div>)
+    return (<div>Отчетики</div>)
 }

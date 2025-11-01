@@ -1,25 +1,30 @@
 import { render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
-
-import { Header } from './components/Header.jsx';
 import { Home } from './pages/Home/index.jsx';
 import { NotFound } from './pages/_404.jsx';
 import './style.css';
 import { init } from './init'
 import { retrieveLaunchParams, postEvent } from '@telegram-apps/sdk-react';
+import { Reports } from './pages/Reports/index.jsx';
+import { Exercises } from './pages/Exercises/index.jsx';
+import { Progress } from './pages/Progress/index.jsx';
+import { Footer } from './components/Footer.jsx';
 
 
 export function App() {
 	return (
 		//<TelegramSDKInitProvider>
 			<LocationProvider>
-				<Header />
 				<main>
 					<Router>
 						<Route path="/" component={Home} />
-						<Route default component={NotFound} />
+						<Route path="/reports" component={Reports}/>
+						<Route path="/exercises" component={Exercises} />
+						<Route path="/progress" component={Progress} />
+						<Route default component={NotFound}/>
 					</Router>
 				</main>
+				<Footer/>
 			</LocationProvider>
 		// </TelegramSDKInitProvider>
 
