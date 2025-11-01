@@ -1,0 +1,6 @@
+@Mihelia_API_HostAddress = http://localhost:5186
+
+GET {{Mihelia_API_HostAddress}}/trainings/
+Accept: application/json
+
+###
